@@ -1,0 +1,23 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[dev]
+  command = "npm run dev"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), browsing-topics=()"
+    # CSP: Allow AdSense, Turnstile, Sentry, PostHog, and CloudConvert
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://pagead2.googlesyndication.com https://browser.sentry-cdn.com https://eu.posthog.com https://us.posthog.com https://eu-assets.i.posthog.com https://us-assets.i.posthog.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://pagead2.googlesyndication.com https://www.googletagmanager.com; connect-src 'self' https://challenges.cloudflare.com https://pagead2.googlesyndication.com *.sentry.io https://eu.posthog.com https://us.posthog.com https://eu.i.posthog.com https://us.i.posthog.com *.supabase.co *.cloudconvert.com; frame-src 'self' https://challenges.cloudflare.com https://googleads.g.doubleclick.net; frame-ancestors 'none'; object-src 'none';"

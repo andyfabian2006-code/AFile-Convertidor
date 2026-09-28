@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Básico -->
+  <title>AFile - Convertidor de Archivos Rápido, Seguro y Gratis</title>
+  <meta name="description" content="AFile es el mejor convertidor de archivos online. Convierte imágenes (PNG, JPG, WEBP) y documentos (PDF, DOCX) al instante de forma segura y privada.">
+  <meta name="keywords" content="convertidor de archivos, convertir pdf a word, convertir imagen, conversor de formatos, afile">
+  <meta name="author" content="AFile">
+  <link rel="canonical" href="https://tudominio.com/">
+  
+  <!-- Open Graph (Facebook, LinkedIn, Discord) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tudominio.com/">
+  <meta property="og:title" content="AFile - Convertidor de Archivos Rápido y Seguro">
+  <meta property="og:description" content="Convierte imágenes y documentos al instante. Procesamiento rápido, privado y 100% seguro.">
+  <meta property="og:image" content="https://tudominio.com/src/assets/images/logo.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://tudominio.com/">
+  <meta property="twitter:title" content="AFile - Convertidor de Archivos Online">
+  <meta property="twitter:description" content="Convierte archivos sin complicaciones y con máxima privacidad.">
+  
+  <link rel="icon" type="image/svg+xml" href="/src/assets/images/favicon.svg">
+
+  <!-- Datos Estructurados JSON-LD (Rich Snippets) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "AFile Converter",
+    "url": "https://tudominio.com",
+    "description": "Herramienta online gratuita para convertir archivos de imagen y documentos de manera rápida y segura.",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All"
+  }
+  </script>
+</head>
+<body>
+  <div class="app-container">
+    <header class="header">
+      <div class="brand">
+        <img src="/src/assets/images/logo.svg" alt="AFile Logo" width="32" height="32" />
+        <span class="brand-name"></span>
+      </div>
+      <nav class="nav-links">
+        <button id="theme-toggle" class="btn btn-icon btn-outline" aria-label="Cambiar tema">
+          <!-- Icon placeholder (sun/moon managed by JS) -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="theme-icon"></svg>
+        </button>
+      </nav>
+    </header>
+
+    <main class="main-content">
+      <div class="converter-section">
+        
+        <!-- Ad Banner Top -->
+        <div class="ad-container ad-banner-top">
+          <!-- Google AdSense Placeholder -->
+        </div>
+
+        <!-- Hero -->
+        <section class="text-center mt-lg mb-lg">
+          <h1 class="mb-xs">Convierte tus archivos al instante</h1>
+          <p class="text-sec text-sm mt-0">Imágenes procesadas offline en tu navegador. Documentos convertidos con máxima seguridad.</p>
+        </section>
+
+        <!-- Main Tool -->
+        <section class="tool-container">
+          <!-- Dropzone -->
+          <div id="dropzone" class="dropzone mb-md">
+            <input type="file" id="file-input" class="dropzone-input" aria-label="Sube un archivo" />
+            
+            <!-- Estado: Vacío -->
+            <div id="dz-empty" class="dropzone-inner">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-sec">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="17 8 12 3 7 8"></polyline>
+                <line x1="12" y1="3" x2="12" y2="15"></line>
+              </svg>
+              <h3 class="mt-sm mb-xs">Arrastra tu archivo aquí</h3>
+              <p class="text-sec text-sm mt-0 mb-xs">o haz clic para buscar</p>
+              <p id="dz-limits-text" class="text-sec text-xs mt-0"></p>
+            </div>
+
+            <!-- Estado: Archivo Cargado -->
+            <div id="dz-loaded" class="dropzone-inner hidden">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-sec">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+              </svg>
+              <h3 id="dz-filename" class="mt-sm mb-0">archivo.png</h3>
+              <p id="dz-file-details" class="text-sec text-sm mt-0"></p>
+            </div>
+
+            <!-- Estado: Procesando -->
+            <div id="dz-processing" class="dropzone-inner hidden" aria-live="polite">
+              <div class="spinner"></div>
+              <h3 class="mt-sm mb-0">Convirtiendo...</h3>
+              <p id="dz-progress-text" class="text-sec text-sm mt-0">0%</p>
+            </div>
+
+            <!-- Estado: Listo -->
+            <div id="dz-done" class="dropzone-inner hidden" aria-live="polite">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-success-border)" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              <h3 class="mt-sm mb-0">¡Conversión exitosa!</h3>
+              <p class="text-sec text-sm mt-0">Tu archivo está listo.</p>
+              <a id="download-btn" class="btn btn-primary mt-sm" href="#" download>Descargar Archivo</a>
+            </div>
+            
+            <!-- Estado: Error -->
+            <div id="dz-error" class="dropzone-inner hidden">
+              <div class="alert-error" role="alert" aria-live="assertive">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="alert-icon">
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                  <line x1="12" y1="9" x2="12" y2="13"></line>
+                  <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+                <div class="text-left">
+                  <h4 class="mt-0 mb-xs">Error al cargar</h4>
+                  <p id="dz-error-msg" class="text-sm mt-0 mb-0">El archivo es demasiado grande.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controles de conversión -->
+          <div class="flex items-center justify-between gap-md mt-md">
+            <div class="flex items-center gap-sm">
+              <span class="font-bold">Convertir a:</span>
+              <select id="format-select" class="form-select" aria-label="Seleccionar formato de salida" disabled>
+                <option value="">Esperando archivo...</option>
+              </select>
+            </div>
+            <button id="convert-btn" class="btn btn-primary" disabled aria-disabled="true">Convertir</button>
+          </div>
+          
+          <div class="flex items-center justify-center gap-xs mt-lg text-sm text-sec">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <span>Imágenes procesadas offline. Documentos procesados de forma segura en la nube (CloudConvert).</span>
+          </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-grid mt-lg mb-lg">
+          <div class="feature-card">
+            <div class="feature-icon" style="color: var(--color-primary); background: rgba(var(--color-primary-rgb), 0.15);">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+            </div>
+            <h3>Rapidez extrema</h3>
+            <p class="text-sm text-sec">Conversión de imágenes directamente en tu navegador usando tecnología local. Sin tiempos de espera por subidas.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon" style="color: var(--color-success); background: rgba(var(--color-success-rgb), 0.15);">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            </div>
+            <h3>Privacidad y seguridad</h3>
+            <p class="text-sm text-sec">Tus imágenes nunca abandonan tu dispositivo. Tus documentos se procesan bajo encriptación fuerte y se eliminan al instante.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon" style="color: var(--color-accent); background: rgba(var(--color-accent-rgb), 0.15);">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            </div>
+            <h3>Siempre disponible</h3>
+            <p class="text-sm text-sec">Herramienta 100% gratuita, sin necesidad de registros engorrosos ni instalaciones de software de terceros.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon" style="color: var(--color-warning); background: rgba(var(--color-warning-rgb), 0.15);">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            </div>
+            <h3>Soporte universal</h3>
+            <p class="text-sm text-sec">Compatibilidad total con PDF, DOCX, XLSX, WEBP, PNG, JPG y más formatos esenciales para tu trabajo.</p>
+          </div>
+        </section>
+
+        <!-- Ad Block in Content -->
+        <div class="ad-container ad-banner-top mt-lg mb-lg">
+          <!-- Google AdSense Placeholder -->
+        </div>
+
+      </div>
+
+      <!-- Sidebar Ads (Desktop) -->
+      <aside class="sidebar">
+        <div class="sidebar-sticky">
+          <div class="ad-container" style="width: 100%; min-height: 400px; margin-bottom: var(--space-lg);">
+            <!-- Google AdSense Placeholder 1 -->
+          </div>
+          <div class="ad-container" style="width: 100%; min-height: 400px;">
+            <!-- Google AdSense Placeholder 2 -->
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <!-- Ad Banner Bottom -->
+    <div class="main-content" style="padding-top:0;">
+       <div class="ad-container ad-banner-bottom">
+          <!-- Google AdSense Placeholder -->
+       </div>
+    </div>
+
+    <footer class="footer">
+      <div class="brand justify-center mb-sm">
+        <img src="/src/assets/images/logo.svg" alt="AFile Logo" width="24" height="24" />
+        <span class="brand-name"></span>
+      </div>
+      <div class="footer-links">
+        <a href="/pages/privacidad.html">Privacidad</a>
+        <a href="/pages/terminos.html">Términos</a>
+        <a href="/pages/contacto.html">Contacto</a>
+        <a href="#" id="config-cookies">Configurar cookies</a>
+      </div>
+      <p class="text-sec text-sm mt-sm">© 2024 <span class="brand-name"></span>. Todos los derechos reservados.</p>
+    </footer>
+    
+    <!-- Report Issue FAB & Modal -->
+    <button id="report-fab" class="report-fab" aria-label="Reportar un problema">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+      </svg>
+    </button>
+
+    <div id="report-modal" class="report-modal hidden">
+      <div class="report-modal-content">
+        <div class="report-modal-header">
+          <h3>¿Algún problema?</h3>
+          <button id="close-report" class="close-btn">&times;</button>
+        </div>
+        <form id="report-form" class="report-form">
+          <p class="report-desc">Describe el problema que estás experimentando. Nuestro equipo lo revisará lo antes posible.</p>
+          
+          <div class="form-group">
+            <label for="report-email">Correo (Opcional)</label>
+            <input type="email" id="report-email" placeholder="tu@email.com" class="input">
+          </div>
+
+          <div class="form-group">
+            <label for="report-message">Mensaje <span class="required">*</span></label>
+            <textarea id="report-message" required placeholder="Explica detalladamente qué ocurrió..." rows="4" class="input"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100" id="btn-submit-report">
+            <span>Enviar Reporte</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="/src/js/main.js"></script>
+</body>
+</html>

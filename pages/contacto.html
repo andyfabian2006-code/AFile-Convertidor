@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto - AFile</title>
+  <link rel="icon" type="image/svg+xml" href="/src/assets/images/favicon.svg">
+  <link rel="stylesheet" href="/src/css/index.css">
+  <!-- Script de Cloudflare Turnstile -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</head>
+<body>
+  <div class="app-container">
+    <header class="header">
+      <a href="/" class="brand" style="text-decoration: none;">
+        <img src="/src/assets/images/logo.svg" alt="AFile Logo" width="32" height="32" />
+        <span class="brand-name"></span>
+      </a>
+      <nav class="nav-links">
+        <button id="theme-toggle" class="btn btn-icon btn-outline" aria-label="Cambiar tema">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="theme-icon"></svg>
+        </button>
+      </nav>
+    </header>
+
+    <main class="main-content">
+      <section class="tool-container mt-lg mb-lg">
+        <h1 class="mb-xs">Contacto</h1>
+        <p class="text-sec text-sm mt-0 mb-md">¿Tienes dudas o sugerencias? Escríbenos.</p>
+        
+        <form id="contact-form" class="flex flex-col gap-sm">
+          <div class="form-group">
+            <label for="name" class="font-bold">Nombre</label>
+            <input type="text" id="name" name="name" class="form-input" required maxlength="100">
+          </div>
+          
+          <div class="form-group mt-sm">
+            <label for="email" class="font-bold">Email</label>
+            <input type="email" id="email" name="email" class="form-input" required>
+          </div>
+          
+          <div class="form-group mt-sm">
+            <label for="message" class="font-bold">Mensaje</label>
+            <textarea id="message" name="message" class="form-input" rows="5" required maxlength="2000"></textarea>
+          </div>
+          
+          <!-- Cloudflare Turnstile Widget -->
+          <div class="cf-turnstile mt-sm" data-sitekey="1x00000000000000000000AA" data-theme="auto"></div>
+          
+          <div id="contact-alert" class="hidden mt-sm" role="alert"></div>
+
+          <button type="submit" id="submit-btn" class="btn btn-primary mt-sm">Enviar Mensaje</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="brand justify-center mb-sm">
+        <img src="/src/assets/images/logo.svg" alt="AFile Logo" width="24" height="24" />
+        <span class="brand-name"></span>
+      </div>
+      <div class="footer-links">
+        <a href="/">Inicio</a>
+        <a href="/pages/privacidad.html">Privacidad</a>
+        <a href="/pages/terminos.html">Términos</a>
+      </div>
+      <p class="text-sec text-sm mt-sm">© 2024 <span class="brand-name"></span>. Todos los derechos reservados.</p>
+    </footer>
+  </div>
+  <script type="module" src="/src/js/ui/contacto.js"></script>
+</body>
+</html>

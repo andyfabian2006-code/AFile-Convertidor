@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Privacidad - AFile</title>
+  <link rel="icon" type="image/svg+xml" href="/src/assets/images/favicon.svg">
+  <link rel="stylesheet" href="/src/css/index.css">
+</head>
+<body>
+  <div class="app-container">
+    <header class="header">
+      <a href="/" class="brand" style="text-decoration: none;">
+        <img src="/src/assets/images/logo.svg" alt="AFile Logo" width="32" height="32" />
+        <span class="brand-name"></span>
+      </a>
+      <nav class="nav-links">
+        <button id="theme-toggle" class="btn btn-icon btn-outline" aria-label="Cambiar tema">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="theme-icon"></svg>
+        </button>
+      </nav>
+    </header>
+
+    <main class="main-content">
+      <section class="tool-container mt-lg mb-lg text-left">
+        <h1 class="mb-sm">Política de Privacidad</h1>
+        
+        <div class="legal-content">
+          <p>Última actualización: <strong>Octubre 2024</strong></p>
+
+          <h2 class="mt-md mb-xs">1. Procesamiento Híbrido (Local y Nube)</h2>
+          <p>En AFile, tu privacidad es nuestra prioridad y aplicamos el mayor nivel de seguridad según el tipo de archivo:</p>
+          <ul>
+            <li><strong>Imágenes:</strong> Se procesan 100% en tu navegador (Client-Side). Tus imágenes nunca se suben a ningún servidor. Además, al procesar imágenes, los metadatos ocultos (como datos EXIF de GPS, fecha de captura, etc.) son descartados automáticamente durante la conversión.</li>
+            <li><strong>Documentos (PDF, Word, Excel, etc.):</strong> Para garantizar la máxima fidelidad y mantener la calidad del documento original, estos archivos se procesan de forma segura a través de la API de <strong>CloudConvert</strong>. Los documentos subidos se transfieren encriptados, se eliminan automáticamente de sus servidores inmediatamente después de la conversión y en ningún caso se utilizan para extraer datos o entrenar modelos de Inteligencia Artificial.</li>
+          </ul>
+
+          <h2 class="mt-md mb-xs">2. Información que Recopilamos</h2>
+          <p>Dado que no requerimos cuentas de usuario ni subida de archivos, la información que recopilamos es mínima y está enfocada en mejorar el servicio:</p>
+          <ul>
+            <li><strong>Estadísticas Anónimas:</strong> Registramos de forma anónima qué formatos se convierten más (ej. "png-to-jpg") usando nuestra propia infraestructura, sin rastrear tu IP más allá del límite de velocidad (rate-limiting) que la olvida de inmediato.</li>
+            <li><strong>Formulario de Contacto:</strong> Si decides escribirnos, almacenaremos temporalmente tu correo electrónico y nombre únicamente con el propósito de responderte.</li>
+          </ul>
+
+          <h2 class="mt-md mb-xs">3. Cookies y Herramientas de Terceros</h2>
+          <p>Para mantener el sitio gratuito, utilizamos herramientas de terceros que pueden establecer cookies en tu navegador, <strong>pero solo si nos das tu consentimiento explícito.</strong></p>
+          <ul>
+            <li><strong>Google AdSense:</strong> Para mostrar anuncios. Google puede usar cookies para personalizar los anuncios basados en tu navegación anterior.</li>
+            <li><strong>PostHog:</strong> Para entender cómo los usuarios interactúan con nuestra web (ej. clics, tiempos de carga) de forma agregada.</li>
+            <li><strong>Cloudflare Turnstile:</strong> Usado en nuestro formulario de contacto para evitar el spam. Esta herramienta opera sin interactuar con los datos personales.</li>
+          </ul>
+          <p>Puedes revocar tu consentimiento en cualquier momento usando el botón "Configurar cookies" en el pie de página.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="brand justify-center mb-sm">
+        <img src="/src/assets/images/logo.svg" alt="AFile Logo" width="24" height="24" />
+        <span class="brand-name"></span>
+      </div>
+      <div class="footer-links">
+        <a href="/">Inicio</a>
+        <a href="/pages/privacidad.html">Privacidad</a>
+        <a href="/pages/terminos.html">Términos</a>
+        <a href="/pages/contacto.html">Contacto</a>
+        <a href="#" id="config-cookies">Configurar cookies</a>
+      </div>
+      <p class="text-sec text-sm mt-sm">© 2024 <span class="brand-name"></span>. Todos los derechos reservados.</p>
+    </footer>
+  </div>
+  <script type="module" src="/src/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+/* Toasts */
+.toast-container {
+  position: fixed;
+  bottom: var(--space-xl);
+  right: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  z-index: 1000;
+  pointer-events: none;
+}
+.toast {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+  color: var(--color-text-main);
+  box-shadow: var(--shadow-md);
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform var(--transition-normal), opacity var(--transition-normal);
+  border-left: 4px solid var(--color-border-strong);
+}
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+.toast-error {
+  border-left-color: var(--color-error-border);
+  background-color: var(--color-error-bg);
+}
+.toast-success {
+  border-left-color: var(--color-success-border);
+  background-color: var(--color-success-bg);
+}
