@@ -109,9 +109,9 @@
 
 /* Contenedores de Ads */
 .ad-container {
+  display: none;
   background-color: var(--color-bg);
   border: 1px dashed var(--color-border-soft);
-  display: flex;
   align-items: center;
   justify-content: center;
   color: var(--color-text-sec);
